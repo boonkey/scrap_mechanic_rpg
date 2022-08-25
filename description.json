@@ -1,0 +1,9 @@
+{
+   "allow_add_mods" : true,
+   "custom_icons" : false,
+   "description" : "just a test",
+   "localId" : "1a9f0610-92a7-4a92-839f-9e7c5a42338a",
+   "name" : "Boonkey-testground",
+   "type" : "Custom Game",
+   "version" : 0
+}

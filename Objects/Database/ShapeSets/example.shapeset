@@ -1,0 +1,42 @@
+{
+    "partList": [
+		{
+			"uuid": "73d57575-8941-425f-a7e8-caafb6d9b7e9",
+			"name": "obj_experience",
+			"renderable": {
+				"lodList": [
+					{
+						"subMeshList": [
+							{
+								"textureList": [
+									"$SURVIVAL_DATA/Objects/Textures/containers/obj_containers_haycrate_dif.tga",
+									"$SURVIVAL_DATA/Objects/Textures/containers/obj_containers_haycrate_asg.tga",
+									"$SURVIVAL_DATA/Objects/Textures/containers/obj_containers_haycrate_nor.tga"
+								],
+								"material": "DifAsgNorAlpha"
+							}
+						],
+						"mesh": "$SURVIVAL_DATA/Objects/Mesh/containers/obj_containers_haycrate.fbx"
+					}
+				]
+			},
+			"color": "00ff00",
+			"hull": {
+				"x": 7,
+				"y": 6,
+				"z": 7,
+				"col": "$SURVIVAL_DATA/Objects/Collision/obj_containers_haycrate.obj"
+			},
+			"rotationSet": "PropY",
+			"physicsMaterial": "Metal",
+			"ratings": {
+				"density": 2,
+				"durability": 10,
+				"friction": 5,
+				"buoyancy": 2
+			},
+			"flammable": false,
+            "stackSize": 100
+		}
+    ]
+}
