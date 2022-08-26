@@ -165,7 +165,7 @@ lootTables.loot_crate_epic = {
 
 lootTables.loot_crate_epic_warehouse = {
 	slots = function() return 4 end,
-	SelectAll = {{ uuid = obj_experience,					chance = 10,	quantity = randomStackAmount20 }},
+	selectAll = {{ uuid = obj_experience,					chance = 10,	quantity = randomStackAmount20 }},
 	selectOne = {
 		{ uuid = jnt_suspensionoffroad_03, 			chance = 1 },
 		{ uuid = jnt_suspensionsport_03, 			chance = 1 },
@@ -183,7 +183,7 @@ lootTables.loot_crate_epic_warehouse = {
 
 lootTables.loot_crate_standard = {
 	slots = function() return randomStackAmount( 2, 3, 4 ) end,
-	SelectAll = {{ uuid = obj_experience,					chance = 10,	quantity = randomStackAmount5 }},
+	selectAll = {{ uuid = obj_experience,					chance = 10,	quantity = randomStackAmount5 }},
 	selectOne = {
 		{ uuid = obj_outfitpackage_common, 		chance = 3 },
 
@@ -245,23 +245,23 @@ lootTables.loot_ruinchest_startarea = {
 
 lootTables.loot_woc = {
 	slots = function() return 2 end,
-	SelectAll = {
+	selectAll = {
 		{ uuid = obj_experience,		chance = 1 },
-		{ uuid = obj_resource_steak,	chance = 1 },
+		{ uuid = obj_resource_steak,	chance = 1 }
 	}
 }
 
 lootTables.loot_woc_milk = {
 	slots = function() return 2 end,
-	SelectAll = {
+	selectAll = {
 		{ uuid = obj_experience,		chance = 1,	quantity = 5},
-		{ uuid = obj_consumable_milk,	chance = 1,	quantity = 5 },
+		{ uuid = obj_consumable_milk,	chance = 1,	quantity = 5 }
 	}
 }
 
 lootTables.loot_glow_goop = {
 	slots = function() return 2 end,
-	SelectAll = {
+	selectAll = {
 		{ uuid = obj_experience,				chance = 1,	quantity = 5},
 		{ uuid = obj_resource_glowpoop,			chance = 1 },
 	}
@@ -269,31 +269,31 @@ lootTables.loot_glow_goop = {
 
 lootTables.loot_totebot_green = {
 	slots = function() return 2 end,
-	SelectAll = {
+	selectAll = {
 		{ uuid = obj_experience,				chance = 1 },
-		{ uuid = obj_resource_circuitboard,		chance = 1 },
-	},
+		{ uuid = obj_resource_circuitboard,		chance = 1 }
+	}
 }
 
 lootTables.loot_haybot = {
 	slots = function() return randomStackAmountAvg2() end,
 	selectOne = {
-		{ uuid = obj_experience,		chance = 1, 	quantity = randomStackAmountAvg5 },
+		{ uuid = obj_experience,		chance = 1, 	quantity = randomStackAmountAvg5 }
 	},
 	randomLoot = {
 		{ uuid = obj_consumable_component,		chance = 1 },
-		{ uuid = obj_resource_circuitboard,		chance = 1 },
+		{ uuid = obj_resource_circuitboard,		chance = 1 }
 	}
 }
 
 lootTables.loot_tapebot = {
 	slots = function() return randomStackAmount( 1, 1.5, 3 ) end,
 	selectOne = {
-		{ uuid = obj_experience,		chance = 1, 	quantity = randomStackAmountAvg10 },
+		{ uuid = obj_experience,		chance = 1, 	quantity = randomStackAmountAvg10 }
 	},
 	randomLoot = {
 		{ uuid = obj_consumable_component,		chance = 2 },
-		{ uuid = obj_consumable_battery,		chance = 5 },
+		{ uuid = obj_consumable_battery,		chance = 5 }
 	}
 }
 
@@ -301,11 +301,11 @@ lootTables.loot_farmbot = {
 	slots = function() return randomStackAmount( 3, 5, 5 ) end,
 	selectAll = {
 		{ uuid = obj_survivalobject_keycard,	chance = 1 },
-		{ uuid = obj_experience,				chance = 1, 	quantity = randomStackAmountAvg10 },
+		{ uuid = obj_experience,				chance = 1, 	quantity = randomStackAmountAvg10 }
 	},
 	randomLoot = {
 		{ uuid = obj_consumable_component,		chance = 2,		quantity = randomStackAmountAvg2 },
-		{ uuid = obj_resource_circuitboard,		chance = 1,		quantity = randomStackAmountAvg2 },
+		{ uuid = obj_resource_circuitboard,		chance = 1,		quantity = randomStackAmountAvg2 }
 	}
 }
 
@@ -366,22 +366,20 @@ function SelectLoot( lootTableName, slotLimit )
 	local lootList = {}
 
 	local lootTable = lootTables[lootTableName]
-
 	local slots = lootTable.slots and lootTable.slots() or 1
 	if slotLimit then
 		slots = math.min( slots, slotLimit )
 	end
 
 	if slots > 0 and lootTable.selectAll then
-
-		while #lootList < slots and lootTable.selectAll do
-			local loot = SelectOne( lootTable.selectAll )
+		for loot_idx = 1, math.min(#lootTable.selectAll, slots) do
+			local loot = SelectOne({lootTable.selectAll[loot_idx]})
 			assert( loot and loot.uuid )
 			lootList[#lootList + 1] = loot
 		end
 	end
 
-	if slots > 0 and lootTable.selectOne then
+	if #lootList < slots and lootTable.selectOne then
 		local loot = SelectOne( lootTable.selectOne )
 		if loot and loot.uuid then
 			if isAnyOf( lootTableName, { "loot_crate_epic", "loot_crate_epic_warehouse" } ) then
