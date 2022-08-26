@@ -17,7 +17,7 @@ local random_loot = {
 	{ uuid = obj_plantables_potato, 		chance = 20,	quantity = randomStackAmountAvg5 },
 
 	{ uuid = obj_consumable_sunshake, 		chance = 15 },
-	{ uuid = obj_experience,				chance = 20,		quantity = randomStackAmount2 },
+	{ uuid = obj_experience,				chance = 20,		quantity = randomStackAmount5 },
 
 	{ uuid = obj_consumable_gas,			chance = 60,	quantity = randomStackAmountAvg3 },
 	{ uuid = obj_consumable_battery,		chance = 40,	quantity = randomStackAmountAvg2 },
@@ -132,7 +132,7 @@ local lootTables = {}
 -- Loot crates
 lootTables.loot_crate_epic = {
 	slots = function() return 4 end,
-	selectOne = {
+	selectAll = {
 		{ uuid = obj_experience,				chance = 1,	quantity = randomStackAmountAvg5 },
 	},
 	selectOne = {
@@ -165,7 +165,7 @@ lootTables.loot_crate_epic = {
 
 lootTables.loot_crate_epic_warehouse = {
 	slots = function() return 4 end,
-	SelectOne = {{ uuid = obj_experience,					chance = 10,	quantity = randomStackAmount20 }},
+	SelectAll = {{ uuid = obj_experience,					chance = 10,	quantity = randomStackAmount20 }},
 	selectOne = {
 		{ uuid = jnt_suspensionoffroad_03, 			chance = 1 },
 		{ uuid = jnt_suspensionsport_03, 			chance = 1 },
@@ -183,12 +183,12 @@ lootTables.loot_crate_epic_warehouse = {
 
 lootTables.loot_crate_standard = {
 	slots = function() return randomStackAmount( 2, 3, 4 ) end,
-	SelectOne = {{ uuid = obj_experience,					chance = 10,	quantity = randomStackAmount5 }},
+	SelectAll = {{ uuid = obj_experience,					chance = 10,	quantity = randomStackAmount5 }},
 	selectOne = {
 		{ uuid = obj_outfitpackage_common, 		chance = 3 },
 
 		{ uuid = obj_consumable_component,		chance = 47 },
-		{ uuid = nil,							chance = 50 }, -- No loot from selectOne
+		{ uuid = nil,							chance = 20 }, -- No loot from selectOne
 	},
 	randomLoot = random_loot
 }
@@ -200,17 +200,16 @@ lootTables.loot_crate_startarea = {
 		{ uuid = obj_consumable_sunshake,		chance = 1 },
 		{ uuid = obj_consumable_component,		chance = 1 },
 		{ uuid = obj_resource_circuitboard,		chance = 1 },
-		-- { uuid = nil,							chance = 2 }, -- No loot from selectOne
 	},
 	randomLoot = random_loot_startarea
 }
 
 lootTables.loot_crate_standard_warehouse = {
-	slots = function() return randomStackAmount( 1, 2, 3 ) end,
+	slots = function() return randomStackAmount( 2, 3, 4 ) end,
+	selectAll = { { uuid = obj_experience,				chance = 10,	quantity = randomStackAmount5 }},
 	selectOne = {
-		{ uuid = obj_plantables_broccoli, 		chance = 1,		quantity = 1 },
-		{ uuid = obj_plantables_pineapple, 		chance = 1,		quantity = 1 },
-		{ uuid = obj_experience,				chance = 10,	quantity = randomStackAmount5 }
+		{ uuid = obj_plantables_broccoli, 		chance = 1,		quantity = 2 },
+		{ uuid = obj_plantables_pineapple, 		chance = 1,		quantity = 2 }
 	},
 	randomLoot = random_warehouseloot
 }
@@ -235,47 +234,43 @@ lootTables.loot_warehouse_locker = {
 }
 
 lootTables.loot_ruinchest = {
-	slots = function() return randomStackAmount( 1, 2, 6 ) end,
-	selectOne = nil,
+	slots = function() return randomStackAmount( 1, 4, 6 ) end,
 	randomLoot = random_loot
 }
 
 lootTables.loot_ruinchest_startarea = {
-	slots = function() return randomStackAmount( 1, 1.5, 4 ) end,
-	selectOne = nil,
+	slots = function() return randomStackAmount( 1, 2.5, 4 ) end,
 	randomLoot = random_loot_startarea
 }
 
 lootTables.loot_woc = {
 	slots = function() return 2 end,
-	SelectOne = {{ uuid = obj_experience,		chance = 1 }},
-	randomLoot = {
-	{ uuid = obj_resource_steak,				chance = 1 },
+	SelectAll = {
+		{ uuid = obj_experience,		chance = 1 },
+		{ uuid = obj_resource_steak,	chance = 1 },
 	}
 }
 
 lootTables.loot_woc_milk = {
 	slots = function() return 2 end,
-	SelectOne = {{ uuid = obj_experience,		chance = 1,	quantity = 5}},
-	randomLoot = {
-		{ uuid = obj_consumable_milk,			chance = 1 },
+	SelectAll = {
+		{ uuid = obj_experience,		chance = 1,	quantity = 5},
+		{ uuid = obj_consumable_milk,	chance = 1,	quantity = 5 },
 	}
 }
 
 lootTables.loot_glow_goop = {
 	slots = function() return 2 end,
-	SelectOne = {{ uuid = obj_experience,		chance = 1,	quantity = 5}},
-	randomLoot = {
+	SelectAll = {
+		{ uuid = obj_experience,				chance = 1,	quantity = 5},
 		{ uuid = obj_resource_glowpoop,			chance = 1 },
 	}
 }
 
 lootTables.loot_totebot_green = {
 	slots = function() return 2 end,
-	selectOne = {
-		{ uuid = obj_experience,		chance = 1 },
-	},
-	randomLoot = {
+	SelectAll = {
+		{ uuid = obj_experience,				chance = 1 },
 		{ uuid = obj_resource_circuitboard,		chance = 1 },
 	},
 }
@@ -287,7 +282,7 @@ lootTables.loot_haybot = {
 	},
 	randomLoot = {
 		{ uuid = obj_consumable_component,		chance = 1 },
-		{ uuid = obj_resource_circuitboard,		chance = 2 },
+		{ uuid = obj_resource_circuitboard,		chance = 1 },
 	}
 }
 
@@ -306,7 +301,7 @@ lootTables.loot_farmbot = {
 	slots = function() return randomStackAmount( 3, 5, 5 ) end,
 	selectAll = {
 		{ uuid = obj_survivalobject_keycard,	chance = 1 },
-		{ uuid = obj_experience,		chance = 1, 	quantity = randomStackAmountAvg10 },
+		{ uuid = obj_experience,				chance = 1, 	quantity = randomStackAmountAvg10 },
 	},
 	randomLoot = {
 		{ uuid = obj_consumable_component,		chance = 2,		quantity = randomStackAmountAvg2 },
@@ -378,6 +373,7 @@ function SelectLoot( lootTableName, slotLimit )
 	end
 
 	if slots > 0 and lootTable.selectAll then
+
 		while #lootList < slots and lootTable.selectAll do
 			local loot = SelectOne( lootTable.selectAll )
 			assert( loot and loot.uuid )
