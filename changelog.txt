@@ -1,0 +1,7 @@
+v0.0.2
+    * Added Green craftbots.
+    * Todo:
+        * Complete inventory
+
+v0.0.1
+    * Added experience tokens
