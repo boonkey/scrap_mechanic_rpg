@@ -1,7 +1,7 @@
 dofile "$SURVIVAL_DATA/Scripts/game/SurvivalGame.lua"
 dofile( "$CONTENT_DATA/Scripts/game/survival_items.lua" )
 dofile( "$CONTENT_DATA/Scripts/game/survival_loot.lua" )
-dofile( "$CONTENT_DATA/Scripts/interactibles/Crafter.lua" )
+dofile( "$CONTENT_DATA/Scripts/game/interactables/Crafter.lua" )
 
 Game = class( SurvivalGame )
 

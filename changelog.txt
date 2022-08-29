@@ -1,3 +1,6 @@
+v0.0.3
+    * Added improvements to refine time - based on amount of XP points in player's inventory
+
 v0.0.2
     * Added Green craftbots.
     * Todo:
