@@ -37,6 +37,28 @@
 			},
 			"flammable": false,
             "stackSize": 100
+		},
+		{
+			"uuid": "404baa74-2b2c-4577-b96f-27b107b9430e",
+			"name": "obj_resource_electronics",
+			"renderable": "$SURVIVAL_DATA/Objects/Renderable/resource/obj_resource_cuircuitboard.rend",
+			"color": "101010",
+			"hull": {
+				"x": 1,
+				"y": 1,
+				"z": 1,
+				"col": "$SURVIVAL_DATA/Objects/Collision/obj_resources_circuitboard.obj"
+			},
+			"rotationSet": "PropYZ",
+			"physicsMaterial": "Metal",
+			"ratings": {
+				"density": 4,
+				"durability": 2,
+				"friction": 6,
+				"buoyancy": 3
+			},
+			"flammable": false,
+			"stackSize": 100
 		}
     ]
 }
